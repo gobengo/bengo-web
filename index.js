@@ -3,8 +3,8 @@ var port = process.env.PORT || 80
 
 var server = require('express')()
 
-var html = require('fs').readFileSync(__dirname+'/index.html');
 server.get('/', function (req, res) {
+  var html = require('fs').readFileSync(__dirname+'/index.html');
   res.set('Content-Type', 'text/html');
   res.send(html);
 })
