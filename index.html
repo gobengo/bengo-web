@@ -16,3 +16,43 @@ These are also rel="me":
   <li>GitHub: <a rel="me" href="https://github.com/gobengo">gobengo</a></li>
 </ul>
 
+<h2>Notes</h2>
+<article vocab="http://www.w3.org/ns/activitystreams#"
+         typeof="Article"
+         resource="urn:uuid:b2734d4b-cb82-4749-948f-5eed9fa9de6d"
+         id="b2734d4b-cb82-4749-948f-5eed9fa9de6d">
+  <h1 property="displayName">Updated bengo.is Topology</h1>
+  <span>by <a property="attributedTo" 
+    href="acct:bengo@bengo.is">bengo</a> at </span>
+  <time property="published" 
+        content="2015-03-24T09:57:12Z"
+        datetime="2015-03-24T09:57:12Z">03:06PST, 3/24/2015</time>
+  <section property="content"
+    <p>Tonight I changed the network topology and server of bengo.is.</p>
+    <p>Previously, I had a DNS A record pointing to the IP of a single Google Compute Engine instance. That instance was running Apache, configured to staticly serve a single directory. In that directory, I edited the default html file to be this file.</p>
+    <p>What changed? Well:
+      <ul>
+        <li>DNS A record now points to a <a href="https://cloud.google.com/compute/docs/load-balancing/http/">Google HTTP Load Balancer</a></li>
+        <li>This Load Balancer routes to the <a href="https://cloud.google.com/compute/docs/instances">instances</a> in an <a href="https://cloud.google.com/compute/docs/instance-groups/">instance group</a>. I can configure autoscaling for this if ever needed.</li>
+        <li>Each instance is running <a href="https://coreos.com/">CoreOS</a></li>
+        <li>From the default CoreOS install, I use <a href="https://www.docker.com/">Docker</a> to build and run the server powering bengo.is
+          <pre><code>
+          docker build -t bengo/web github.com/gobengo/bengo.is
+          docker run --name web -d -p 80:80 bengo/web
+          </code></pre>
+        </li>
+        <li>Notably, this directly uses the <a href="https://github.com/gobengo/bengo.is/blob/36dc84f71440717cb806412da6409b5c72befe09/Dockerfile">Dockerfile</a> in the open source <a href="https://github.com/gobengo/bengo.is">gobengo/bengo.is</a> repo. There is also an Automated Build on <a href="https://hub.docker.com/">Docker Hub</a> that automatically watches the GitHub repo, then rebuilds and publishes the docker image as <a href="https://registry.hub.docker.com/u/gobengo/bengo.is/">gobengo/bengo.is</a>.</li>
+        <li>The server itself is currently just a node.js express app, <a href="https://github.com/gobengo/bengo.is/blob/36dc84f71440717cb806412da6409b5c72befe09/index.js">index.js</a>, that serves a single HTML file, <a href="https://github.com/gobengo/bengo.is/blob/36dc84f71440717cb806412da6409b5c72befe09/index.html">index.html</a></li>
+      </ul>
+    </p>
+    <p>What could be improved?
+      <ul>
+        <li>More features in the application server</li>
+        <li>Have more than one instance behind the load balancer, autoscale the instance group</li>
+        <li>My CoreOS hosts aren't yet configured enough to be ephemeral. That is, a newly spun up host does not automatically run the `<code>docker</code>` commands mentioned above. I believe this can be done on GCE with <a href="https://cloud.google.com/compute/docs/startupscript">Startup Scripts</a></li>
+      </ul>
+    </p>
+    <p>And hey! this my first <a href="https://indiewebcamp.com/post">post</a> or, to be specific (look at the RDFa of this markup), <a href="http://www.w3.org/TR/2015/WD-activitystreams-vocabulary-20150129/#dfn-article">Article</a>.</p>
+    </p>
+  </section>
+</article>
