@@ -23,13 +23,24 @@ test('server serves bengo html', function (t) {
     .then(t.end, t.end)
 })
 
-test('/notes', function (t) {
+test('/notes/ serves html', function (t) {
   testRequest(bengo.web.server.create())
     .get('/notes/')
     .expect(200)
     .then(function (res) {
       t.ok(res, 'res is truthy')
       t.ok(/DOCTYPE html/.test(res.text), 'is html')
+    })
+    .then(t.end, t.end)
+})
+
+test('/notes/ links to specific notes', function (t) {
+  testRequest(bengo.web.server.create())
+    .get('/notes/')
+    .expect(200)
+    .then(function (res) {
+      t.ok(res, 'res is truthy')
+      t.ok(/20150324-first/.test(res.text), 'is html')
     })
     .then(t.end, t.end)
 })
