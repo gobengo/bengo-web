@@ -1,6 +1,6 @@
 var log = require('debug')('bengo-web')
 
-var server = exports.server = require('./src/server').create();
+var server = exports.server = require('./src/server');
 
 if (require.main === module) {
     main();

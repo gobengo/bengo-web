@@ -13,6 +13,8 @@
     "express": "^4.12.3"
   },
   "devDependencies": {
+    "supertest": "^0.15.0",
+    "supertest-as-promised": "^1.0.0",
     "tape": "^3.5.0"
   }
 }
