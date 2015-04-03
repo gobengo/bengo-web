@@ -34,13 +34,17 @@ test('/notes/ serves html', function (t) {
     .then(t.end, t.end)
 })
 
+
 test('/notes/ links to specific notes', function (t) {
   testRequest(bengo.web.server.create())
     .get('/notes/')
     .expect(200)
     .then(function (res) {
       t.ok(res, 'res is truthy')
-      t.ok(/20150324-first/.test(res.text), 'is html')
+
+      t.ok(/20150324-first/.test(res.text), 'links to first post')
+      t.ok(/20150402-notes/.test(res.text), 'links to second post about /notes/')
     })
     .then(t.end, t.end)
 })
+
