@@ -18,7 +18,18 @@ test('server serves bengo html', function (t) {
     .expect(200)
     .then(function (res) {
       t.ok(res, 'res is truthy')
-      t.ok(/<html>/.test(res.text), 'is html')
+      t.ok(/DOCTYPE html/.test(res.text), 'is html')
+    })
+    .then(t.end, t.end)
+})
+
+test('/notes', function (t) {
+  testRequest(bengo.web.server.create())
+    .get('/notes/')
+    .expect(200)
+    .then(function (res) {
+      t.ok(res, 'res is truthy')
+      t.ok(/DOCTYPE html/.test(res.text), 'is html')
     })
     .then(t.end, t.end)
 })

@@ -9,5 +9,5 @@ if (require.main === module) {
 function main() {
   var port = process.env.PORT || 80
   log('listening on port '+port)
-  server.listen(port);
+  server.create().listen(port);
 }
