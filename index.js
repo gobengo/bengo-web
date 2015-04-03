@@ -1,13 +1,13 @@
 var log = require('debug')('bengo-web')
-var port = process.env.PORT || 80
 
-var server = require('express')()
+var server = exports.server = require('./src/server');
 
-server.get('/', function (req, res) {
-  var html = require('fs').readFileSync(__dirname+'/index.html');
-  res.set('Content-Type', 'text/html');
-  res.send(html);
-})
+if (require.main === module) {
+    main();
+}
 
-log('listening on port '+port)
-server.listen(port)
+function main() {
+  var port = process.env.PORT || 80
+  log('listening on port '+port)
+  server.create().listen(port);
+}

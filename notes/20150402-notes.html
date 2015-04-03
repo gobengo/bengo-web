@@ -1,0 +1,66 @@
+<article id="3604015c-260c-4494-8c5c-93e9f82ebf29">
+  <!--
+  Man, I kinda wanna style this aside off to the right? How should that work without leading to groww markup? I guess I could always author for standalone viewing, and make cleaning up style attributes a downstream problem for someone who cares about facilitating syndication.
+  -->
+  <aside>
+    This note is my 2nd <a href="http://indiewebcamp.com/posts">post</a>! Two is the first even integer. Also, it's the threshold for accomplishing the <a href="http://indiewebcamp.com/IndieMark">IndieMark</a> achievement for "permalinks". That means I get 0.2 points, bringing my total to 0.6! If I mark up these posts as <a href="http://indiewebcamp.com/h-entry">h-entry</a>s, I can get anoter 0.2 points, but I refuse to actually author class-attribute-based microformats in this day and age of <a href="http://www.w3.org/TR/rdfa-in-html/">HTML+RDFa</a>, so I'm boycotting them until I can automate that.
+  </aside>
+
+  <header>
+    <h1>
+      bengo.is/notes/ exists and hosts this article
+    </h1><span>by <a href="acct:bengo@bengo.is">bengo</a> at</span>
+    <a href=""><time datetime="2015-04-02T20:55:02Z">20:55PST, 04/02/2015</time></a>
+  </header>
+  <div>
+    <p>
+      What's an #indieweb if I can't publish to it?
+    </p>
+    <p>
+      Now I can, and you can access my notes at <a href="/notes/">/notes/</a>.
+    </p>
+
+    <h2>Publishing</h2>
+      <p>
+        How do I create a new note?
+      </p>
+      <p>
+        I add a file to the /notes/ directory of the bengo-web codebase. Pretty easy.
+        I've taken to the convention of authoring html and 
+      </p>
+
+    <h2>Software</h2>
+    <p>
+      How do my note files get served over HTTP?
+    </p>
+    <p>
+      I added some new routes to <a href="../src/server.js">bengo.web.server</a>. Specifically, you can now GET
+      <ul>
+        <li><a href="/notes/">/notes/</a> - An index listing of all notes</li>
+        <li><a href="/notes">/notes</a> - a convenience 302 redirect to <a href="/notes/">/notes/</a></li>
+        <li><a href="/notes/{note}.html">/notes/{note}.html</a>An individual note. {note} intentionally left undefined</li>
+      </ul>
+    </p>
+      <h3>Testing</h3>
+      <p>
+        I also added <a href="/test/index.js">a testing system</a> so that I never regress on serving certain things. This is critical for ensuring true <a href="https://indiewebcamp.com/permalinks">permalinks</a>. I now test for
+        <ul>
+          <li>I can<code>let server = require('.').web.server.create().listen(port)</code></li>
+          <li>On HTTP GET of / or /notes/, respond with a 200 containing 'html'</li>
+          <li>The HTML of /notes/ links to (as of now) two note permalinks</li>
+          <li>HTTP GET of /notes -> 302 Redirect /notes/</li>
+        </ul>
+        I've seen that testing can save thousands of hours of work over the lifetime of a software project with a long lifecycle, as I hope this will prove to be. Testing and proving and trusting is more important to me than actually making applications.
+      </p>
+
+      <h3>TODO</h3>
+        <ul>
+          <li>URLs should not have to have .html in them. i.e. this should work '<a href="/notes/20150402-notes">/notes/20150402-notes</a>'</li>
+          <li>Automate test to make sure all hyperlinks work (esp internal hyperlinks</li>
+          <li>Serve the source code of this project over HTTP as /src/. Then posts can refer to source code files.</li>
+          <li>Automate the tests using a free service like <a href="https://travis-ci.org/">Travis CI</a></li>
+          <li>Eventually, host my own CI/Testing service and page so you can see if the tests for bengo.is are passing.</li>
+          <li>Post more notes!</li>
+          <li>If only others could reply to my notes... with <a href="https://indiewebcamp.com/comment">their own notes...</a></li>
+        </ul>
+</article>
