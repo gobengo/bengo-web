@@ -10,6 +10,7 @@ WORKDIR /app
 RUN npm install
 
 EXPOSE 80
+EXPOSE 443
 
 ENV DEBUG *
 CMD ["nodejs", "/app/index.js"]
