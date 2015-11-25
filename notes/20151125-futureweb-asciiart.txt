@@ -1,6 +1,8 @@
-╭--(HTML) (iOS) (Android)--╮
-|^^^^^^ presentation ^^^^^^|
-|   Linked Data Protocol <——---Control Plane (Web APIs)
+    (HTML) (iOS) (Android)-->->╮
+╭-^^^^^ presentation ^^^^^-╮   |
+|    Your App  <-Control Plane-╯ 
+|^v^v^v^v^v^v^v^v^v^v^v^v^v|
+|   Linked Data Protocol   |
 |~~~~~~~~ storage ~~~~~~~~~|
 |   Object Store (Swift)   |
 |    - VM - VM - VM -      |
