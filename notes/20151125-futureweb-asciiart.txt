@@ -2,7 +2,7 @@
 |^^^^^^ presentation ^^^^^^|
 |   Linked Data Protocol <——---Control Plane (Web APIs)
 |~~~~~~~~ storage ~~~~~~~~~|
-|   Object Store (Ceph)    |
+|   Object Store (Swift)   |
 |    - VM - VM - VM -      |
-|   Block Store (Ceph)     |
+|   Block Store (Cinder)   |
 ╰--------------------------╯
