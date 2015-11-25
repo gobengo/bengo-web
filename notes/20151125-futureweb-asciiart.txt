@@ -1,8 +1,8 @@
-(HTML) (iOS) (Android)----╮
-^^^^^^presentation^^^^^^^ |
-   Linked Data Protocol <——---Control Plane (Web APIs)
-~~~~~~~~ network ~~~~~~~  |
-   Object Store (Ceph)    |
-    - VM - VM - VM -      |
-   Block Store (Ceph)     |
---------------------------╯
+╭--(HTML) (iOS) (Android)--╮
+|^^^^^^ presentation ^^^^^^|
+|   Linked Data Protocol <——---Control Plane (Web APIs)
+|~~~~~~~~ storage ~~~~~~~~~|
+|   Object Store (Ceph)    |
+|    - VM - VM - VM -      |
+|   Block Store (Ceph)     |
+╰--------------------------╯
