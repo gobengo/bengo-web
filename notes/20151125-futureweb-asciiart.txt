@@ -3,8 +3,6 @@
 |    Your App  <-Control Plane-╯ 
 |^v^v^v^v^v^v^v^v^v^v^v^v^v|
 |   Linked Data Protocol   |
-|~~~~~~~~ storage ~~~~~~~~~|
+|~~~~~~~~ network ~~~~~~~~~|
 |   Object Store (Swift)   |
-|    - VM - VM - VM -      |
-|   Block Store (Cinder)   |
 ╰--------------------------╯
