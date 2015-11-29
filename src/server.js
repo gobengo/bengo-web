@@ -17,7 +17,9 @@ exports.create = function createBengoWebServer() {
   })
 
   server.use('/notes/', require('serve-index')('../notes', {'icons': true}))
-  server.use('/notes/', require('serve-static')(__dirname + '/../notes'))
+  server.use('/notes/', require('serve-static')(__dirname + '/../notes', {
+    extensions: ['html', 'md', 'txt']
+  }))
 
   return server;
 }
