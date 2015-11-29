@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <style scoped>
+    <style scoped="">
       p > img {
         display             : block;
         margin              : 1em auto;
@@ -133,23 +133,19 @@ Lame
         Unzipped to ~/carina/bengo-web
       </li>
       <li>
-        <p>
-          Opened terminal
-        </p>
-        <p>
-          <code>
-          </code>
-        </p>
-        <pre><code>âĄ cd ~/dev/bengo-web # My site source code
-âĄ . ~/carina/bengo-web/docker.env # Set Docker env vars to my carina cluster
-âĄ docker build -t bengo-web . # Build my site to container image
-âĄ docker run --detach --name bengo-web --publish 80 bengo-web
-âĄ open "http://$(docker port bengo-web 80)"
-</code></pre>
-        <p>
-        </p>
+        Opened terminal:
+        <code>
+          <pre>⚡ cd ~/dev/bengo-web # My site source code
+⚡ . ~/carina/bengo-web/docker.env # Set Docker env vars to my carina cluster
+⚡ docker build -t bengo-web . # Build my site to container image
+⚡ docker run --detach --name bengo-web --publish 80 bengo-web
+⚡ open "http://$(docker port bengo-web 80)"
+</pre>
+        </code>
       </li>
     </ol>
+    <p>
+    </p>
     <p>
       <strong>
         And I was staring at my site on the public internet.
@@ -157,7 +153,11 @@ Lame
       Woah.
     </p>
     <p>
-      It seemed too good to be true. All I needed was my domain pointing there. I asked the (nascent) <a href="https://community.getcarina.com/t/how-do-i-point-my-domain-name-to-a-carina-container/78">Carina community</a>. But then I just remembered how to DNS. I changed my A record to point to the IP from
+      It seemed too good to be true. All I needed was my domain pointing there. I asked the (nascent)
+      <a href="https://community.getcarina.com/t/how-do-i-point-my-domain-name-to-a-carina-container/78">
+        Carina community
+      </a>
+      . But then I just remembered how to DNS. I changed my A record to point to the IP from
       <code>
         docker port bengo-web 80
       </code>
