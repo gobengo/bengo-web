@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Fail fast
+# set -e
+# DEBUG
+# set -x
+
+usage() {
+cat <<-"END"
+Deploy bengo-web
+
+Usage:
+  deploy
+  deploy -h
+
+Options:
+  -h --help           Show this help.
+END
+}
+
+# http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+for i in "$@"
+do
+case $i in
+    -h|--help)
+    usage
+    exit
+    ;;
+esac
+done
+
+
+image_name=bengo-web
+image_tag=$(date +"%s")
+image=$image_name:$image_tag
+container_name=bengo-web
+# Build
+docker build -t $image .
+# Stop Old
+docker stop $container_name
+docker rm $container_name
+# Deploy
+docker run --detach --name $container_name -p 80:80 $image
