@@ -1,182 +1,143 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style scoped="">
+<article title="bengo.is back!"
+         lang="en-US"
+         id="c73469ba-96f3-11e5-8be3-7831c1cf2c8e">
+  <style scoped>
       p > img {
         display             : block;
         margin              : 1em auto;
         max-height          : 16em;
       }
-    </style>
-  </head>
-  <body>
-    <h1>
-      bengo.is back!
-    </h1>
-    <p>
-      After setting this little site up in a fit of indieweb-inspiration in May, it quickly fell into disarray.
-      <a href="./20150324-first">
-        I was hosting on Google Cloud</a>
-      , but after awhile my debit card expired, I accrued a balance due, and they shut down my project until I paid up. Fair enough.
-    </p>
-    <p>
-      I had set it all up in a really complicated way as an excuse to play with <a href="http://kubernetes.io/">kubernetes</a>, so it unnecessarily used three VMs that were costing $30/month anyway, which I didn't want to pay for. So I let it go...
-    </p>
-    <p>
-      With a personal domain refusing all connections, I attended the
-      <a href="https://indiewebcamp.com/events/2015-11-18-homebrew-website-club">
-        Homebrew Website Club on November 18</a>
-      and quietly felt like a total loser. I
-      <em>
-        had
-      </em>
-      to return to my former glor-- well, existence-- glory can come later.
-    </p>
-    <p>
-      I set aside some time the following weekend to get the web server back up. It ought to be easily rebuildable, because containerization. How hard could it be? It turns out if you don't pay Google, they get frustrated and suspicious. My account had been flagged for fraud. No matter what I clicked in the gcloud console, I saw this roadblock:
-      <img alt='screenshot of gcloud "Account Suspended" message' src="https://cldup.com/eWuRGvaJBC.png"/>
-    </p>
-    <p>
-      I accessed the Account Verification form. It required uploading the following verification documents:
-    </p>
-    <blockquote>
-      <ul>
-        <li>
-          One non-expired, government-issued identification
-        </li>
-        <li>
-          One document with your billing address dated within the last four months that shows the same address on file in your Billing account (if you can't remember the billing address in your account, or you have multiple, use your most recent home address).
-        </li>
-      </ul>
-    </blockquote>
-    <p>
-      Lame. &#128530;
-    </p>
-    <p>
-      I looked around for a way to just go ahead and change my billing info and pay any balance due. As far as I can tell there is
-      <em>
-        no way
-      </em>
-      to get to the billing section of the console with your account in this state, which is dumb.
-    </p>
-    <p>
-      My father's first rule of business is "Don't make it hard for me to pay you", and Google Cloud violates it.
-    </p>
-    <p>
-      So I scrounged around and compiled the documents to prove my billing address (it doesn't help that I have moved since May), found an image editing program, edited out account numbers, submitted the form, and waited... and waited... I received no email confirmation.
-    </p>
-    <blockquote>
-      <p>
-        <strong>
-          How long will it take to verify my information?
-        </strong>
-        The process should take 24 hours. In rare cases, it may take 3-5 business days. You'll receive an email as soon as your information is verified.
-      </p>
-    </blockquote>
-    <p>
-      That was a week ago. Three days ago I sent something through the gcloud console's built-in feedback form about how I was confused and just want to gcloud. Nothing.
-    </p>
-    <p>
-      Fully blocked, I gave up on that suspended gcloud project. What was a nerd to do? I considered, briefly, starting another gcloud project from scratch, as well as falling back to
-      <a href="https://aws.amazon.com">AWS</a>
-      like I use at work. There are
-      <a href="https://digitalocean.com">tons</a>
-      <a href="https://dreamhost.com">of</a>
-      <a href="https://linode.com">other</a>
-      VPS providers that would work just fine, but don't have all the cloudy features I'd like to learn anyway for more web-scale projects. I decided to give up, eat some apple pie, and continue trying later.
-    </p>
-    <p>
-      The next day I was watching videos from the
-      <a href="https://www.openstack.org/summit/tokyo-2015/">OpenStack Summit in Tokyo</a>
-      about a month ago. I stumbled upon
-      "<a href="https://www.openstack.org/summit/tokyo-2015/videos/presentation/pure-simplicity-of-containers-on-openstack">Pure Simplicity of Containers on OpenStack</a>"
-      by Adrian Otto, Product Architect at Rackspace. It turned out to be the launch announcement of
-      <a href="https://getcarina.com/">Carina</a>
-      , "An easy-to-use, instant-on, native container environment" (by Rackspace).
-    </p>
-    <p>
-      The best part was that it featured
-      <a href="https://youtu.be/kcHV-3Fkcx8?t=7m13s">his ten year-old son using docker to deploy a container to the cloud</a>. The second best part was that it looked nice and easy. The third best part is that it's currently free. I signed up for the beta and got an email invite right away.
-    </p>
-    <p>
-      I logged in and saw a simple dashboard with a single affordance, "Add cluster". I clicked and used the two-input form to name it "bengo-web" and enabled autoscale (sounds useful).
-      <img alt="bengo-web cluster in the Carina dashboard" src="https://cldup.com/A_otdATSFM.png"/>
-    </p>
-    <p>
-      Then I did the following:
-    </p>
-    <ol>
-      <li>
-        Click "Get Access" and download a .zip of stuff for my cluster
-      </li>
-      <li>
-        Unzipped to ~/carina/bengo-web
-      </li>
-      <li>
-        Opened terminal:
-        <code>
-          <pre>⚡ cd ~/dev/bengo-web # My site source code
+  </style>
+
+  <h1>bengo.is back!</h1>
+  
+  <p>After setting this little site up in a fit of indieweb-inspiration in May,
+  it quickly fell into disarray. <a href="./20150324-first">I was hosting on
+  Google Cloud</a> , but after awhile my debit card expired, I accrued a
+  balance due, and they shut down my project until I paid up. Fair enough.</p>
+  <p>I had set it all up in a really complicated way as an excuse to play with
+  <a href="http://kubernetes.io/">kubernetes</a>, so it unnecessarily used
+  three VMs that were costing $30/month anyway, which I didn't want to pay for.
+  So I let it go...</p>
+  <p>With a personal domain refusing all connections, I attended the <a href=
+  "https://indiewebcamp.com/events/2015-11-18-homebrew-website-club">Homebrew
+  Website Club on November 18</a> and quietly felt like a total loser. I
+  <em>had</em> to return to my former glor-- well, existence-- glory can come
+  later.</p>
+  <p>I set aside some time the following weekend to get the web server back up.
+  It ought to be easily rebuildable, because containerization. How hard could
+  it be? It turns out if you don't pay Google, they get frustrated and
+  suspicious. My account had been flagged for fraud. No matter what I clicked
+  in the gcloud console, I saw this roadblock: <img alt=
+  'screenshot of gcloud "Account Suspended" message' src=
+  "https://cldup.com/eWuRGvaJBC.png"></p>
+  <p>I accessed the Account Verification form. It required uploading the
+  following verification documents:</p>
+  <blockquote>
+    <ul>
+      <li>One non-expired, government-issued identification</li>
+      <li>One document with your billing address dated within the last four
+      months that shows the same address on file in your Billing account (if
+      you can't remember the billing address in your account, or you have
+      multiple, use your most recent home address).</li>
+    </ul>
+  </blockquote>
+  <p>Lame. 😒</p>
+  <p>I looked around for a way to just go ahead and change my billing info and
+  pay any balance due. As far as I can tell there is <em>no way</em> to get to
+  the billing section of the console with your account in this state, which is
+  dumb.</p>
+  <p>My father's first rule of business is "Don't make it hard for me to pay
+  you", and Google Cloud violates it.</p>
+  <p>So I scrounged around and compiled the documents to prove my billing
+  address (it doesn't help that I have moved since May), found an image editing
+  program, edited out account numbers, submitted the form, and waited... and
+  waited... I received no email confirmation.</p>
+  <blockquote>
+    <p><strong>How long will it take to verify my information?</strong> The
+    process should take 24 hours. In rare cases, it may take 3-5 business days.
+    You'll receive an email as soon as your information is verified.</p>
+  </blockquote>
+  <p>That was a week ago. Three days ago I sent something through the gcloud
+  console's built-in feedback form about how I was confused and just want to
+  gcloud. Nothing.</p>
+  <p>Fully blocked, I gave up on that suspended gcloud project. What was a nerd
+  to do? I considered, briefly, starting another gcloud project from scratch,
+  as well as falling back to <a href="https://aws.amazon.com">AWS</a> like I
+  use at work. There are <a href="https://digitalocean.com">tons</a> <a href=
+  "https://dreamhost.com">of</a> <a href="https://linode.com">other</a> VPS
+  providers that would work just fine, but don't have all the cloudy features
+  I'd like to learn anyway for more web-scale projects. I decided to give up,
+  eat some apple pie, and continue trying later.</p>
+  <p>The next day I was watching videos from the <a href=
+  "https://www.openstack.org/summit/tokyo-2015/">OpenStack Summit in Tokyo</a>
+  about a month ago. I stumbled upon "<a href=
+  "https://www.openstack.org/summit/tokyo-2015/videos/presentation/pure-simplicity-of-containers-on-openstack">Pure
+  Simplicity of Containers on OpenStack</a>" by Adrian Otto, Product Architect
+  at Rackspace. It turned out to be the launch announcement of <a href=
+  "https://getcarina.com/">Carina</a> , "An easy-to-use, instant-on, native
+  container environment" (by Rackspace).</p>
+  <p>The best part was that it featured <a href=
+  "https://youtu.be/kcHV-3Fkcx8?t=7m13s">his ten year-old son using docker</a>
+  to deploy a container to the cloud. The second best part was that it looked
+  nice and easy. The third best part is that it's currently free. I signed up
+  for the beta and got an email invite right away.</p>
+  <p>I logged in and saw a simple dashboard with a single affordance, "Add
+  cluster". I clicked and used the two-input form to name it "bengo-web" and
+  enabled autoscale (sounds useful). <img alt=
+  "bengo-web cluster in the Carina dashboard" src=
+  "https://cldup.com/A_otdATSFM.png"></p>
+  <p>Then I did the following:</p>
+  <ol>
+    <li>Click "Get Access" and download a .zip of stuff for my cluster</li>
+    <li>Unzipped to ~/carina/bengo-web</li>
+    <li>Opened terminal:
+      <pre>
+<code>⚡ cd ~/dev/bengo-web # My site source code
 ⚡ . ~/carina/bengo-web/docker.env # Set Docker env vars to my carina cluster
 ⚡ docker build -t bengo-web . # Build my site to container image
 ⚡ docker run --detach --name bengo-web --publish 80 bengo-web
 ⚡ open "http://$(docker port bengo-web 80)"
+</code>
 </pre>
-        </code>
-      </li>
-    </ol>
-    <p>
-    </p>
-    <p>
-      <strong>
-        And I was staring at my site on the public internet.
-      </strong>
-      Woah.
-    </p>
-    <p>
-      It seemed too good to be true. All I needed was my domain pointing there. I asked the (nascent)
-      <a href="https://community.getcarina.com/t/how-do-i-point-my-domain-name-to-a-carina-container/78">Carina community</a>. But then I just remembered how to DNS. I changed my A record to point to the IP from
-      <code>
-        docker port bengo-web 80
-      </code>
-      instead of my gcloud Zone.
-    </p>
-    <p>
-      Now bengo.is back. And I am happy.
-    </p>
-    <p>
-      Carina is
-      <em>
-        awesome
-      </em>
-      so far for this sort of personal (or prototyping) use case where you just need to run a process published on a port somewhere in the cloud. It's free for now, which is right in my budget. I'm really looking forward to seeing how they grow this product. The last time I was this impressed, it was with Heroku's
-      <code>
-        git push
-      </code>
-      simplicity. And this is even faster.
-    </p>
-    <p>
-      The future of application development in the cloud is going to be fun. And fast.
-    </p>
-    <hr/>
-    <h2>
-      Postscript
-    </h2>
-    <p>
-      In my further research, I learned that Carina is likely 'just' an opaque productization of
-      <a href="https://wiki.openstack.org/wiki/Magnum">OpenStack Magnum</a>
-      .
-    </p>
-    <blockquote>
-      <p>
-        Magnum is an OpenStack API service developed by the OpenStack Containers Team making container orchestration engines such as Docker and Kubernetes available as first class resources in OpenStack. Magnum uses Heat to orchestrate an OS image which contains Docker and Kubernetes and runs that image in either virtual machines or bare metal in a cluster configuration.
-      </p>
-    </blockquote>
-    <p>
-      The
-      <a href="https://launchpad.net/magnum">project launchpad</a>
-      shows that
-      <a href="http://adrianotto.com/">Adrian Otto</a>
-      is not just a sales dude that delegates the hard pitch work to his son. He's also the project's top contributor (by almost a factor of 2!), and has been actively helping diagnose and delegate bugs in the last week. Kudos to him and Rackspace for contributing this under an Apache license for the rest of us to use and learn from.
-    </p>
-  </body>
-</html>
+    </li>
+  </ol>
+  <p><strong>And I was staring at my site on the public internet.</strong>
+  Woah.</p>
+  <p>It seemed too good to be true. All I needed was my domain pointing there.
+  I asked the (nascent) <a href=
+  "https://community.getcarina.com/t/how-do-i-point-my-domain-name-to-a-carina-container/78">
+  Carina community</a>. But then I just remembered how to DNS. I changed my A
+  record to point to the IP from <code>docker port bengo-web 80</code> instead
+  of my gcloud Zone.</p>
+  <p>Now bengo.is back. And I am happy.</p>
+  <p>Carina is <em>awesome</em> so far for this sort of personal (or
+  prototyping) use case where you just need to run a process published on a
+  port somewhere in the cloud. It's free for now, which is right in my budget.
+  I'm really looking forward to seeing how they grow this product. The last
+  time I was this impressed, it was with Heroku's <code>git push</code>
+  simplicity. And this is even faster.</p>
+  <p>The future of application development in the cloud is going to be fun. And
+  fast.</p>
+  <hr>
+  <h2>Postscript</h2>
+  <p>In my further research, I learned that Carina is likely 'just' an opaque
+  productization of <a href="https://wiki.openstack.org/wiki/Magnum">OpenStack
+  Magnum</a>.</p>
+  <blockquote>
+    <p>Magnum is an OpenStack API service developed by the OpenStack Containers
+    Team making container orchestration engines such as Docker and Kubernetes
+    available as first class resources in OpenStack. Magnum uses Heat to
+    orchestrate an OS image which contains Docker and Kubernetes and runs that
+    image in either virtual machines or bare metal in a cluster
+    configuration.</p>
+  </blockquote>
+  <p>The <a href="https://launchpad.net/magnum">project launchpad</a> shows
+  that <a href="http://adrianotto.com/">Adrian Otto</a> is not just a sales
+  dude that delegates the hard pitch work to his son. He's also the project's
+  top contributor (by almost a factor of 2!), and has been actively helping
+  diagnose and delegate bugs in the last week. Kudos to him and Rackspace for
+  contributing this under an Apache license for the rest of us to use and learn
+  from.</p>
+</article>
