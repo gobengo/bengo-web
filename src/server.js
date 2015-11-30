@@ -1,18 +1,20 @@
 var serve = {
   index: require('serve-index'),
   static: require('serve-static')
-};
-
+}
 var render = {
   index: require('./render-dir-index')
 }
+var webmention = require('./webmention')
+
+var NOTES_DIR = dataDir('notes')
+var QUESTIONS_DIR = dataDir('questions')
+var WEBMENTION_URI = 'https://webmention.io/bengo.is/webmention'
 
 exports.create = function createBengoWebServer() {
   var server = require('express')()
+  server.use(webmention.headerMiddleware(WEBMENTION_URI))
 
-  function dataDir(name) { return __dirname + '/../' + name; }
-  var NOTES_DIR = dataDir('notes');
-  var QUESTIONS_DIR = dataDir('questions')
   server.get('/', function (req, res) {
     var html = require('fs').readFileSync(__dirname+'/index.html');
     res.set('Content-Type', 'text/html');
@@ -46,3 +48,5 @@ exports.create = function createBengoWebServer() {
 
   return server;
 }
+
+function dataDir(name) { return __dirname + '/../' + name; }
