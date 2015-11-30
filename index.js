@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var log = require('debug')('bengo-web')
 var fs = require('fs');
 var server = exports.server = require('./src/server');
