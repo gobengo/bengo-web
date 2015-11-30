@@ -42,5 +42,7 @@ exports.create = function createBengoWebServer() {
     extensions: ['html', 'md', 'txt']
   }))
 
+  server.use(require('./well-known')())
+
   return server;
 }
