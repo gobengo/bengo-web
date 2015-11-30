@@ -14,22 +14,79 @@
     Advertise a webmention receiver
     #TODO: Host this myself
     -->
+    <link rel="me" href="" />
     <link rel="pingback" href="https://webmention.io/bengo.is/xmlrpc" />
     <link rel="webmention" href="https://webmention.io/bengo.is/webmention" />
+    <style>
+    .crop-circle {
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+    }
+    .bengo-home {
+      text-align: center;
+      max-width: 22em;
+      margin: 0 auto;
+    }
+    .bengo-home h1 {
+      text-decoration: none;
+    }
+    .bengo-home .card .avatar {
+      margin: 0 auto;
+      max-height: 16em;
+    }
+    ul.rel-me-link-list {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    ul.rel-me-link-list > li {
+      display: inline-block;
+    }
+    ul.rel-me-link-list > li img {
+      max-height: 1em;
+      vertical-align: middle;
+    }
+    body > nav > a {
+      font-size: 2em;
+    }
+    </style>
   </head>
-  <body>
-    <h1>
-      bengo.is
-    </h1>These are also rel="me":
-    <ul>
-      <li>Twitter: <a href="https://twitter.com/bengo" rel="me">@bengo</a>
+  <body class="bengo-home">
+    <div class="card h-card">
+      <h1>
+        <a rel="author" href="" class="u-url u-uid">
+          <span class="p-nickname">bengo</span>.is
+        </a>
+      </h1>
+      <img src="https://secure.gravatar.com/avatar/710b26b2330f4a1b310c244ae917bf0b?size=320"
+           alt="bengo's avatar"
+           class="u-photo avatar"
+           />
+      <h2><span class="p-name"><span class="p-given-name">Benjamin</span> Goering</span></h2>
+      <p class="bio">
+        <span class="p-job-title">Product Manager, Programmer</span><br />
+        <span class="p-note">from Topeka, Kansas to <span class="p-locality">San Francisco</span> since 2010.<br />
+        Studies web publishing, cloud computing, federated identity, open annotation, games, online communities
+      </p>
+    </div>
+    <nav>
+      <a href="/notes/">Notes</a>
+      &nbsp;
+      <a href="/questions/">Questions</a>
+    </nav>
+    <ul class="rel-me-link-list">
+      <li>
+        <img src="https://www.twitter.com/favicon.ico" />
+        <a href="https://twitter.com/bengo" rel="me">@bengo</a>
       </li>
-      <li>GitHub: <a href="https://github.com/gobengo" rel="me">gobengo</a>
+      <li>
+        <img src="https://assets-cdn.github.com/favicon.ico" />
+        <a href="https://github.com/gobengo" rel="me">gobengo</a>
+      </li>
+      <li>
+        <img src="https://static.licdn.com/scds/common/u/images/logos/favicons/v1/favicon.ico" />
+        <a href="https://www.linkedin.com/in/benjamingoering">bengoering</a>
       </li>
     </ul>
-    <h2>
-      <a href="/notes/">Notes</a>
-      <a href="/questions/">Questions</a>
-    </h2>
   </body>
 </html>
