@@ -1,9 +1,6 @@
 FROM node:6.2.2
 MAINTAINER bengo
 
-#RUN apt-get update
-#RUN apt-get install -y nodejs npm git
-
 COPY . /app
 WORKDIR /app
 
