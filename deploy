@@ -40,4 +40,4 @@ docker build -t $image .
 docker stop $container_name
 docker rm $container_name
 # Deploy
-docker run --detach --name $container_name -p 80:80 $image
+docker run --restart=always --detach --name $container_name -p 80:80 $image
